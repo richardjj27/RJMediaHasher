@@ -19,18 +19,20 @@ def process_attributes(filepath, filetype):
    #paths = []
    for root, dirs, files in os.walk(filepath):
       for file in files:
-         if file.lower().endswith(filetype.lower()):
+         if file.lower().endswith(tuple(filetype)):
             filename = os.path.join(root, file)
             xattr.setxattr(filename, "user.comment", "Simple text file abc")
 
             print(filename)
-            print(getmodtime(filename))
-            print(getmd5hash(filename))
+            #print(getmodtime(filename))
+            #print(getmd5hash(filename))
 
+            #xattr.setxattr(filename, "user.md5hash", getmd5hash(filename))
+            #xattr.setxattr(filename, "user.md5time", getmodtime(filename))
             # the attributes
             #user.md5hash
             #user.md5time
 
    return
 
-process_attributes('./test', 'txt')
+process_attributes('./test', [".log", ".jpg"])
