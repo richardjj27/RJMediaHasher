@@ -33,4 +33,4 @@ def process_attributes(filepath, filetype):
 
    return
 
-process_attributes('/home/rjohnson/test', '.txt')
+process_attributes('./test', 'txt')
